@@ -21,9 +21,9 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User>({
     id: '1',
-    name: 'John Watson',
-    age: 34,
-    weight: 70,
+    name: 'Bunny',
+    age: 21,
+    weight: 50,
     height: 185,
   });
 
