@@ -35,17 +35,16 @@ const SettingsItem = ({ icon, color, title, subtitle, onClick, gradient }) => (
     </div>
     <div className="flex-grow">
       <h3 className="text-md sm:text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
-      <p className="text-sm text-gray-600 dark:text-gray-400">{subtitle}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-200">{subtitle}</p>
     </div>
     <ChevronRight className="w-6 h-6 text-gray-300 dark:text-gray-500" />
   </button>
 );
 
-
 // --- Toggle Switch ---
 const ToggleSwitch = ({ label, enabled, setEnabled }) => (
   <label className="flex items-center justify-between cursor-pointer">
-    <span className="text-gray-700 dark:text-gray-300">{label}</span>
+    <span className="text-gray-700 dark:text-gray-200">{label}</span>
     <div
       className={`relative w-11 h-6 rounded-full transition-colors duration-300 ${
         enabled ? 'bg-orange-500' : 'bg-gray-300 dark:bg-gray-600'
@@ -90,7 +89,7 @@ const MainSettingsPage = ({ setActivePage }) => (
         <SettingsIcon className="w-12 h-12 text-white" />
       </div>
       <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Settings</h1>
-      <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">
+      <p className="text-lg text-gray-600 dark:text-gray-200 mt-2">
         Manage your profile, preferences, and app settings.
       </p>
     </div>
@@ -149,28 +148,28 @@ const ProfilePage = ({ onBack }) => {
             <User className="w-10 h-10 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold">{user.name}</h3>
-            <p className="text-gray-500">{user.email}</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{user.name}</h3>
+            <p className="text-gray-500 dark:text-gray-200">{user.email}</p>
           </div>
         </div>
         <div className="border-t border-gray-200 dark:border-gray-700 my-6"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="text-sm font-medium text-gray-600 dark:text-gray-400">Name</label>
+            <label className="text-sm font-medium text-gray-600 dark:text-gray-200">Name</label>
             <input
               type="text"
               value={editedUser.name}
               onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-              className="w-full mt-1 p-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+              className="w-full mt-1 p-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-900 dark:text-white"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-gray-600 dark:text-gray-400">Email</label>
+            <label className="text-sm font-medium text-gray-600 dark:text-gray-200">Email</label>
             <input
               type="email"
               value={user.email}
               disabled
-              className="w-full mt-1 p-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg cursor-not-allowed"
+              className="w-full mt-1 p-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg cursor-not-allowed text-gray-900 dark:text-gray-300"
             />
           </div>
         </div>
@@ -196,11 +195,11 @@ const NotificationsPage = ({ onBack }) => {
   return (
     <SubPageWrapper title="Notifications" icon={<Bell className="w-7 h-7 text-green-500" />} onBack={onBack}>
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Channels</h3>
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Channels</h3>
         <ToggleSwitch label="Push Notifications" enabled={pushEnabled} setEnabled={setPushEnabled} />
         <ToggleSwitch label="Email Notifications" enabled={emailEnabled} setEnabled={setEmailEnabled} />
         <div className="border-t border-gray-200 dark:border-gray-700 my-6"></div>
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Reminders</h3>
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Reminders</h3>
         <ToggleSwitch label="Fasting Reminders" enabled={fastingReminders} setEnabled={setFastingReminders} />
       </div>
     </SubPageWrapper>
@@ -213,8 +212,8 @@ const PrivacyPage = ({ onBack }) => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h4 className="font-semibold text-gray-800 dark:text-gray-100">Two-Factor Authentication</h4>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <h4 className="font-semibold text-gray-800 dark:text-white">Two-Factor Authentication</h4>
+          <p className="text-sm text-gray-500 dark:text-gray-200">
             Add an extra layer of security to your account.
           </p>
         </div>
@@ -224,8 +223,8 @@ const PrivacyPage = ({ onBack }) => (
       </div>
       <div className="flex justify-between items-center">
         <div>
-          <h4 className="font-semibold text-gray-800 dark:text-gray-100">Manage Data</h4>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <h4 className="font-semibold text-gray-800 dark:text-white">Manage Data</h4>
+          <p className="text-sm text-gray-500 dark:text-gray-200">
             Download or delete your account data.
           </p>
         </div>
@@ -246,22 +245,22 @@ const HelpPage = ({ onBack, setActivePage }) => (
         onClick={() => setActivePage('faq')}
         className="block w-full text-left p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50"
       >
-        <h4 className="font-semibold text-gray-800 dark:text-gray-100">FAQ</h4>
-        <p className="text-sm text-gray-500 dark:text-gray-400">Find answers to frequently asked questions.</p>
+        <h4 className="font-semibold text-gray-800 dark:text-white">FAQ</h4>
+        <p className="text-sm text-gray-500 dark:text-gray-200">Find answers to frequently asked questions.</p>
       </button>
       <button
         onClick={() => setActivePage('contact')}
         className="block w-full text-left p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50"
       >
-        <h4 className="font-semibold text-gray-800 dark:text-gray-100">Contact Us</h4>
-        <p className="text-sm text-gray-500 dark:text-gray-400">Get in touch with our support team.</p>
+        <h4 className="font-semibold text-gray-800 dark:text-white">Contact Us</h4>
+        <p className="text-sm text-gray-500 dark:text-gray-200">Get in touch with our support team.</p>
       </button>
       <button
         onClick={() => setActivePage('terms')}
         className="block w-full text-left p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50"
       >
-        <h4 className="font-semibold text-gray-800 dark:text-gray-100">Terms of Service</h4>
-        <p className="text-sm text-gray-500 dark:text-gray-400">Read our terms and conditions.</p>
+        <h4 className="font-semibold text-gray-800 dark:text-white">Terms of Service</h4>
+        <p className="text-sm text-gray-500 dark:text-gray-200">Read our terms and conditions.</p>
       </button>
     </div>
   </SubPageWrapper>
@@ -271,20 +270,20 @@ const FAQPage = ({ onBack }) => (
   <SubPageWrapper title="FAQ" icon={<HelpCircle className="w-7 h-7 text-yellow-500" />} onBack={onBack}>
     <div className="space-y-4">
       <div>
-        <h4 className="font-semibold">How do I reset my password?</h4>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <h4 className="font-semibold text-gray-900 dark:text-white">How do I reset my password?</h4>
+        <p className="text-sm text-gray-600 dark:text-gray-200">
           Go to Privacy & Security → Reset Password and follow the instructions.
         </p>
       </div>
       <div>
-        <h4 className="font-semibold">Can I export my data?</h4>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <h4 className="font-semibold text-gray-900 dark:text-white">Can I export my data?</h4>
+        <p className="text-sm text-gray-600 dark:text-gray-200">
           Yes, under Privacy & Security you can download all your account data.
         </p>
       </div>
       <div>
-        <h4 className="font-semibold">How do I contact support?</h4>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <h4 className="font-semibold text-gray-900 dark:text-white">How do I contact support?</h4>
+        <p className="text-sm text-gray-600 dark:text-gray-200">
           Use the Contact Us page to send us your query.
         </p>
       </div>
@@ -296,16 +295,16 @@ const ContactPage = ({ onBack }) => (
   <SubPageWrapper title="Contact Us" icon={<HelpCircle className="w-7 h-7 text-green-500" />} onBack={onBack}>
     <form className="space-y-4">
       <div>
-        <label className="block text-sm font-medium">Your Name</label>
-        <input type="text" className="w-full mt-1 p-2 border rounded-lg bg-gray-50 dark:bg-gray-700" />
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Your Name</label>
+        <input type="text" className="w-full mt-1 p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
       </div>
       <div>
-        <label className="block text-sm font-medium">Email</label>
-        <input type="email" className="w-full mt-1 p-2 border rounded-lg bg-gray-50 dark:bg-gray-700" />
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
+        <input type="email" className="w-full mt-1 p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
       </div>
       <div>
-        <label className="block text-sm font-medium">Message</label>
-        <textarea rows="4" className="w-full mt-1 p-2 border rounded-lg bg-gray-50 dark:bg-gray-700"></textarea>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Message</label>
+        <textarea rows="4" className="w-full mt-1 p-2 border rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
       </div>
       <button
         type="submit"
@@ -319,7 +318,7 @@ const ContactPage = ({ onBack }) => (
 
 const TermsPage = ({ onBack }) => (
   <SubPageWrapper title="Terms of Service" icon={<HelpCircle className="w-7 h-7 text-red-500" />} onBack={onBack}>
-    <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+    <div className="space-y-4 text-sm text-gray-600 dark:text-gray-200">
       <p>By using this app, you agree to the following terms and conditions:</p>
       <ul className="list-disc pl-6 space-y-2">
         <li>You are responsible for maintaining the confidentiality of your account.</li>
